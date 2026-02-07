@@ -6,12 +6,23 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  
 }
-
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(
+    to bottom,
+    #111827 0%,
+    #0f172a 50%,
+    #020617 100%
+  );
+}
 .Subs02 {
   min-width: 220px;
   padding: 25px 30px;
-  background: linear-gradient(135deg, #1e293b, #020617);
+  background: linear-gradient(135deg, #334155, #0f172a);
   border-radius: 14px;
   cursor: pointer;
   text-align: center;
@@ -22,25 +33,11 @@
   height: 100px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  gap: 10px;
   align-items: center;
 }
 
-.Subs02::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    400px circle at var(--x, 50%) var(--y, 50%),
-    rgba(255, 255, 255, 0.12),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.Subs02:hover::before {
-  opacity: 1;
-}
 
 .Subs02:hover {
   transform: translateY(-6px) scale(1.03);
@@ -48,8 +45,15 @@
 }
 
 .Subs02 h2 {
-  color: #e5e7eb;
+  color: #f1f5f9;
   font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+.Subs02 h3{
+  color: #f1f5f9;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   margin: 0;

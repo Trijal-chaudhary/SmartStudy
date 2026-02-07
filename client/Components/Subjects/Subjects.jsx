@@ -1,14 +1,25 @@
 import React from "react";
 import "./Subjects.css";
+import Subject from "../../src/assets/Subjects";
+import { useNavigate } from "react-router-dom";
 const Subjects = () => {
+  const navigate = useNavigate();
+  const handelSub = (ele) => {
+    navigate(`/Chapter/${ele}`);
+  };
   return (
     <div className="SubjectsOuterMain">
-      <div className="Subs02">
-        <h2>Physics</h2>
-      </div>
-      <div className="Subs02">
-        <h2>Mathematics-I</h2>
-      </div>
+      {Object.keys(Subject).map((key, idx) => (
+        <div
+          key={idx}
+          className="Subs02"
+          onClick={() => {
+            handelSub(key);
+          }}
+        >
+          <h2>{key}</h2>
+        </div>
+      ))}
     </div>
   );
 };

@@ -1,0 +1,142 @@
+.QuestionOuterCont {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #f1f5f9;
+  color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.QuesDetExtraCont {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #334155;
+}
+
+.QuestionCOntOut {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #f8fafc;
+  border-radius: 18px;
+  padding: 18px;
+  width: 70%;
+  align-items: center;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.questionOuterCard {
+  width: 95%;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  padding: 14px;
+}
+
+.questionOuterCard img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.quesDetOuterInner {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 95%;
+  /* height: 50px; */
+  padding: 18px 12px;
+}
+.buttonsOrIcons{
+  background: #f1f5f9;
+  padding: 6px 14px;
+  border-radius: 8px;
+  
+  border: 1px solid #cbd5e1;
+}
+.quesDetOuterInner h4 {
+ 
+  font-size: 13px;
+  color: #0f172a;
+}
+.uploadAnsFromStudent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.uploadAnsFromStudent svg{
+  height: 30px;
+}
+.answerOuterBox {
+  width: 95%;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  position: relative;
+}
+.outermotionuper{
+  width: 95%;
+  overflow: hidden;
+}
+.downImgArrow{
+  height: 2rem;
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  cursor: pointer;
+}
+.downImgArrow:hover{
+  scale: 1.1;
+  fill: #0f172a;
+}
+.quest{
+  width: 95%;
+  border: 2px solid #e2e8f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 15px;
+}
+.answerOuterBox h4 {
+  font-size: 13px;
+  color: #0369a1;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.answerOuterBox img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .quesDetOuterInner {
+    justify-content: center;
+  }
+
+  .QuestionCOntOut {
+    width: 100%;
+  }
+
+  .questionOuterCard {
+    width: 100%;
+  }
+}

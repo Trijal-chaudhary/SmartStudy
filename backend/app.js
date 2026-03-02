@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const { uploadQuestionRouter } = require('./router/AdminRouter');
+const { PostGetQuestionsRouter } = require('./router/ClientRouter');
 const app = express();
 const DB_URL = process.env.DB_URL;
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(cors({
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/questionSubmit', uploadQuestionRouter)
+app.use('/client/gettingques', PostGetQuestionsRouter)
 mongoose.connect(DB_URL).then(() => {
   console.log('mongoose connected');
   app.listen(3000, () => {

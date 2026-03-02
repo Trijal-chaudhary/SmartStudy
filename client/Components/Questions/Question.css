@@ -9,7 +9,18 @@
   gap: 14px;
   align-items: center;
 }
-
+.FiterRenderButton{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 30px;
+  cursor: pointer;
+  fill: #334155;
+}
+.FiterRenderButton:hover{
+  scale: 1.2;
+  fill:#0f172a;
+}
 .QuesDetExtraCont {
   display: flex;
   gap: 16px;

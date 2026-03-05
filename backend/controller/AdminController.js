@@ -20,6 +20,7 @@ exports.uploadQuestion = async (req, res) => {
       subject: req.body.Subjects,
       chapter: req.body.Chapter,
       year: [req.body.Year],
+      SubCode: req.body.SubCode,
       semester: req.body.Sem,
       QuesUrl: ques,
       AnsUrl: ans,

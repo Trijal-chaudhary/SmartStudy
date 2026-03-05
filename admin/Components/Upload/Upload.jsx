@@ -1,20 +1,35 @@
 import React from "react";
 import "./Upload.css";
 import { handelUploadQues } from "../../src/assets/service/fetching";
+import { showSub } from "../../src/assets/subDet";
+import { useState } from "react";
 const Upload = () => {
+  const [sem, setSem] = useState();
+  const [subCode, setSubCode] = useState();
   const handelFile = async (e) => {
     e.preventDefault();
     const file = e.target;
     const formData = new FormData(file);
     await handelUploadQues(formData);
   };
+  const handelSubChange = (e) => {
+    const subData = showSub.find((ele) => ele.sub === e.target.value);
+    setSem(subData.sem);
+    setSubCode(subData.code);
+  };
   return (
     <div className="UploadOuterMainCont">
       <form className="UploadOuterform" action="" onSubmit={handelFile}>
         <label htmlFor="Subjects">Subjects:</label>
-        <select name="Subjects" id="subjects">
-          <option value="Physics">Physics</option>
-          <option value="Mathematics-I">Mathematics-I</option>
+        <select
+          // value={subject}
+          onChange={(e) => handelSubChange(e)}
+          name="Subjects"
+          id="subjects"
+        >
+          {showSub.map((ele) => (
+            <option value={ele.sub}>{ele.sub}</option>
+          ))}
         </select>
         <label htmlFor="Chapter">Chapter:</label>
         <select name="Chapter" id="chapter">
@@ -38,11 +53,32 @@ const Upload = () => {
           <option value="2025">2025</option>
           <option value="2026">2026</option>
         </select>
-        <label htmlFor="Sem">Semester:</label>
-        <select name="Sem" id="sem">
-          <option value="Odd">Odd</option>
-          <option value="Even">Even</option>
-        </select>
+
+        {sem ? (
+          <>
+            <label htmlFor="Sem">Semester:</label>
+            <select name="Sem" id="sem">
+              {sem.map((ele) => (
+                <option value={ele}>{ele}</option>
+              ))}
+            </select>
+          </>
+        ) : (
+          <></>
+        )}
+        {subCode ? (
+          <>
+            <label htmlFor="subCode">Subject Code:</label>
+            <select name="SubCode" id="SubCode">
+              {subCode.map((ele) => (
+                <option value={ele}>{ele}</option>
+              ))}
+            </select>
+          </>
+        ) : (
+          <></>
+        )}
+
         <label htmlFor="Question">Upload Question:</label>
         <input type="file" id="Question" name="Question" />
         <label htmlFor="Ans">Upload Answer:</label>

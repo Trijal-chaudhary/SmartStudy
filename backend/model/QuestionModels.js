@@ -8,6 +8,10 @@ const QuestionDetails = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  SubCode: {
+    type: String,
+    required: true
+  },
   dislikes: {
     type: Number,
     default: 0

@@ -4,6 +4,14 @@ const QuestionDetails = new mongoose.Schema({
     type: Number,
     default: 1
   },
+  likes: {
+    type: Number,
+    default: 0
+  },
+  dislikes: {
+    type: Number,
+    default: 0
+  },
   subject: {
     type: String,
     required: true
@@ -13,7 +21,7 @@ const QuestionDetails = new mongoose.Schema({
     required: true
   },
   year: {
-    type: String,
+    type: [Number],
     required: true
   },
   semester: {

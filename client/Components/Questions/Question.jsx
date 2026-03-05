@@ -3,16 +3,25 @@ import "./Question.css";
 import { motion } from "framer-motion";
 import { questionsAre } from "../../src/services/fetching";
 import Filter from "./Filter/Filter";
+import { useParams } from "react-router-dom";
 const Questions = () => {
-  const [renderand, setRenderAns] = useState("");
+  const [renderand, setRenderAns] = useState([]);
   const [questions, setQuestion] = useState([]);
   const [renderFilter, setRenderFilter] = useState(false);
+  const { branch, year, sem, subject } = useParams();
   useEffect(() => {
     questionsAre({ Subject: "Physics", Year: 1 }).then((res) => {
       console.log(res.result[0]?._id);
       setQuestion(res?.result);
+      res?.result.forEach((element) => {
+        setRenderAns((prev) => [...prev, ""]);
+      });
     });
+    console.log(branch, year, sem, subject);
   }, []);
+  const handleChange = (index, val) => {
+    setRenderAns((prev) => prev.map((item, i) => (i === index ? val : item)));
+  };
   return (
     <div className="QuestionOuterCont">
       <Filter renderFilter={renderFilter} setRenderFilter={setRenderFilter} />
@@ -30,13 +39,23 @@ const Questions = () => {
         {/* <h4>Unit-I</h4> */}
       </div>
       {/* <div className="questionInteraction"></div> */}
-      {questions?.map((ele) => (
+      {questions?.map((ele, idx) => (
         <div className="QuestionCOntOut">
           <div className="quest">
             <div className="questionOuterCard">
               <img src={ele?.QuesUrl} alt="" />
             </div>
             <div className="quesDetOuterInner">
+              <div className="buttonsOrIcons">
+                <svg
+                  className="ReapeatSVG"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 640 640"
+                >
+                  <path d="M534.6 182.6C547.1 170.1 547.1 149.8 534.6 137.3L470.6 73.3C461.4 64.1 447.7 61.4 435.7 66.4C423.7 71.4 416 83.1 416 96L416 128L256 128C150 128 64 214 64 320C64 337.7 78.3 352 96 352C113.7 352 128 337.7 128 320C128 249.3 185.3 192 256 192L416 192L416 224C416 236.9 423.8 248.6 435.8 253.6C447.8 258.6 461.5 255.8 470.7 246.7L534.7 182.7zM105.4 457.4C92.9 469.9 92.9 490.2 105.4 502.7L169.4 566.7C178.6 575.9 192.3 578.6 204.3 573.6C216.3 568.6 224 556.9 224 544L224 512L384 512C490 512 576 426 576 320C576 302.3 561.7 288 544 288C526.3 288 512 302.3 512 320C512 390.7 454.7 448 384 448L224 448L224 416C224 403.1 216.2 391.4 204.2 386.4C192.2 381.4 178.5 384.2 169.3 393.3L105.3 457.3z" />
+                </svg>
+                <h4>1</h4>
+              </div>
               <div className="buttonsOrIcons">
                 <h4>Year: {ele?.year}</h4>
               </div>
@@ -76,16 +95,25 @@ const Questions = () => {
               <div className="buttonsOrIcons">
                 <h4>Solutions</h4>
               </div>
+              <div className="buttonsOrIcons">
+                <svg
+                  className="CommentsSVG"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 640 640"
+                >
+                  <path d="M267.7 576.9C267.7 576.9 267.7 576.9 267.7 576.9L229.9 603.6C222.6 608.8 213 609.4 205 605.3C197 601.2 192 593 192 584L192 512L160 512C107 512 64 469 64 416L64 192C64 139 107 96 160 96L480 96C533 96 576 139 576 192L576 416C576 469 533 512 480 512L359.6 512L267.7 576.9zM332 472.8C340.1 467.1 349.8 464 359.7 464L480 464C506.5 464 528 442.5 528 416L528 192C528 165.5 506.5 144 480 144L160 144C133.5 144 112 165.5 112 192L112 416C112 442.5 133.5 464 160 464L216 464C226.4 464 235.3 470.6 238.6 479.9C239.5 482.4 240 485.1 240 488L240 537.7C272.7 514.6 303.3 493 331.9 472.8z" />
+                </svg>
+              </div>
             </div>
             <div className="answerOuterBox">
               <h4>AI-Solution</h4>
               <div className="hahaha">
-                {!renderand ? (
+                {renderand[idx] == "" ? (
                   <svg
                     className="downImgArrow"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 640 640"
-                    onClick={() => setRenderAns(ele?._id)}
+                    onClick={() => handleChange(idx, "1")}
                   >
                     <path d="M297.4 438.6C309.9 451.1 330.2 451.1 342.7 438.6L502.7 278.6C515.2 266.1 515.2 245.8 502.7 233.3C490.2 220.8 469.9 220.8 457.4 233.3L320 370.7L182.6 233.4C170.1 220.9 149.8 220.9 137.3 233.4C124.8 245.9 124.8 266.2 137.3 278.7L297.3 438.7z" />
                   </svg>
@@ -94,7 +122,7 @@ const Questions = () => {
                     className="downImgArrow"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 640 640"
-                    onClick={() => setRenderAns("")}
+                    onClick={() => handleChange(idx, "")}
                   >
                     <path d="M297.4 201.4C309.9 188.9 330.2 188.9 342.7 201.4L502.7 361.4C515.2 373.9 515.2 394.2 502.7 406.7C490.2 419.2 469.9 419.2 457.4 406.7L320 269.3L182.6 406.6C170.1 419.1 149.8 419.1 137.3 406.6C124.8 394.1 124.8 373.8 137.3 361.3L297.3 201.3z" />
                   </svg>
@@ -106,7 +134,7 @@ const Questions = () => {
                   height: 0,
                 }}
                 animate={
-                  renderand === ele?._id
+                  renderand[idx] === "1"
                     ? {
                         height: "auto",
                       }

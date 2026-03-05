@@ -70,18 +70,25 @@
 }
 .buttonsOrIcons{
   background: #f1f5f9;
-  padding: 0px 14px;
+  padding: 0px 9.5px;
   border-radius: 8px;
   height: 40px;
   border: 1px solid #cbd5e1;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5px;
 }
 .quesDetOuterInner h4 {
   margin: 0;
-  font-size: 13px;
+  font-size: 12px;
   color: #0f172a;
+}
+.ReapeatSVG{
+  height: 30px;
+}
+.CommentsSVG{
+  height: 30px;
 }
 .uploadAnsFromStudent{
   display: flex;

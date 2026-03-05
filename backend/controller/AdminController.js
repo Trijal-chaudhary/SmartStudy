@@ -19,7 +19,7 @@ exports.uploadQuestion = async (req, res) => {
     const detatils = new QuestionDetails({
       subject: req.body.Subjects,
       chapter: req.body.Chapter,
-      year: req.body.Year,
+      year: [req.body.Year],
       semester: req.body.Sem,
       QuesUrl: ques,
       AnsUrl: ans,

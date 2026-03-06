@@ -6,7 +6,7 @@ const ViewPYQ = () => {
   const [branch, setBranch] = useState("");
   const [year, setYear] = useState(0);
   const [sem, setSem] = useState("");
-  const [subject, setSubject] = useState([]);
+  const [subject, setSubject] = useState("");
   const [subs, setSubs] = useState([]);
   const navigate = useNavigate();
   const handelBranch = (B_Name) => {
@@ -32,6 +32,7 @@ const ViewPYQ = () => {
     // console.log(showSub);
   };
   const handelSubmit = () => {
+    if (subject === "") return;
     navigate(`/question/${branch}/${year}/${sem}/${subject.sub}`);
   };
   return (

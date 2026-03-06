@@ -9,22 +9,48 @@ const Questions = () => {
   const [questions, setQuestion] = useState([]);
   const [renderFilter, setRenderFilter] = useState(false);
   const { branch, year, sem, subject } = useParams();
+  const [subName, setsubName] = useState(subject);
+  const [semName, setSemName] = useState("any");
+  const [QuesYear, setQuesYear] = useState("any");
+  const [marks, setMarks] = useState("any");
+  const [Level, setLevel] = useState("any");
   useEffect(() => {
-    questionsAre({ Subject: "Physics", Year: 1 }).then((res) => {
-      console.log(res.result[0]?._id);
+    // setsubName(subject);
+    questionsAre({
+      Subject: subName,
+      Year: 1,
+      sem: semName,
+      QuesYear: QuesYear,
+      marks: marks,
+      level: Level,
+    }).then((res) => {
+      // console.log(res.result[0]?._id);
       setQuestion(res?.result);
       res?.result.forEach((element) => {
         setRenderAns((prev) => [...prev, ""]);
       });
     });
     console.log(branch, year, sem, subject);
-  }, []);
+  }, [subName, semName, QuesYear, marks, Level]);
   const handleChange = (index, val) => {
     setRenderAns((prev) => prev.map((item, i) => (i === index ? val : item)));
   };
   return (
     <div className="QuestionOuterCont">
-      <Filter renderFilter={renderFilter} setRenderFilter={setRenderFilter} />
+      <Filter
+        subName={subName}
+        setsubName={setsubName}
+        renderFilter={renderFilter}
+        setRenderFilter={setRenderFilter}
+        setSemName={setSemName}
+        semName={semName}
+        setQuesYear={setQuesYear}
+        QuesYear={QuesYear}
+        setMarks={setMarks}
+        marks={marks}
+        setLevel={setLevel}
+        Level={Level}
+      />
       <svg
         className="FiterRenderButton"
         xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +61,7 @@ const Questions = () => {
       </svg>
       <div className="QuesDetExtraCont">
         <h4>1st-Year</h4>
-        <h4>Physics</h4>
+        <h4>{subName}</h4>
         {/* <h4>Unit-I</h4> */}
       </div>
       {/* <div className="questionInteraction"></div> */}

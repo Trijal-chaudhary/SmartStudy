@@ -16,6 +16,13 @@ const Filter = ({
   setLevel,
   Level,
 }) => {
+  const handelChangeSub = (subN) => {
+    setsubName(subN);
+    setLevel("any");
+    setMarks("any");
+    setQuesYear("any");
+    setSemName("any");
+  };
   return (
     <motion.div
       initial={{
@@ -35,7 +42,7 @@ const Filter = ({
       </svg>
       <label htmlFor="sub">Subject:-</label>
       <select
-        onChange={(e) => setsubName(e.target.value)}
+        onChange={(e) => handelChangeSub(e.target.value)}
         value={subName}
         name="sub"
         id="sub"

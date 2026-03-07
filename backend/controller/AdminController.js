@@ -38,5 +38,26 @@ exports.uploadQuestion = async (req, res) => {
 }
 exports.gettingQuestion = async (req, res, next) => {
   console.log(req.body);
-  res.status(202).json({ message: "hello" })
+  const { subName, year, semName, QuesYear, marks, Level } = req.body;
+  const query = {}
+  if (subName !== "any") {
+    query.subject = subName;
+  }
+  if (year !== "any") {
+    query.collYear = Number(year);
+  }
+  if (semName !== "any") {
+    query.semester = semName;
+  }
+  if (QuesYear !== "any") {
+    query.year = Number(QuesYear);
+  }
+  if (marks !== "any") {
+    query.marks = Number(marks);
+  }
+  if (Level !== "any") {
+    query.level = Number(Level);
+  }
+  const result = await QuestionDetails.find(query);
+  res.status(202).json({ det: result })
 }

@@ -1,0 +1,95 @@
+.questionAdPageOuter{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:40px;
+  background:#f5f7fb;
+}
+
+.questionAdCard{
+  width:900px;
+  background:white;
+  border-radius:12px;
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  box-shadow:0px 8px 25px rgba(0,0,0,0.08);
+}
+
+.questionAdTopInfo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.questionAdSubject{
+  font-size:22px;
+  font-weight:600;
+}
+
+.questionAdCode{
+  font-size:14px;
+  background:#eef2ff;
+  padding:6px 12px;
+  border-radius:6px;
+}
+
+.questionAdMetaContainer{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.questionAdMetaBox{
+  display:flex;
+  flex-direction:column;
+  background:#fafafa;
+  padding:10px 16px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.questionAdMetaLabel{
+  font-size:12px;
+  color:#666;
+}
+
+.questionAdImagesContainer{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+.questionAdImageBlock{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.questionAdImageTitle{
+  font-size:18px;
+  font-weight:600;
+}
+
+.questionAdImage{
+  width:100%;
+  border-radius:8px;
+  border:1px solid #e5e5e5;
+}
+
+.questionAdReactionBar{
+  display:flex;
+  gap:20px;
+  font-size:18px;
+}
+
+.questionAdLike{
+  cursor:pointer;
+}
+
+.questionAdDislike{
+  cursor:pointer;
+}

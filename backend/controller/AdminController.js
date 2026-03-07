@@ -61,3 +61,8 @@ exports.gettingQuestion = async (req, res, next) => {
   const result = await QuestionDetails.find(query);
   res.status(202).json({ det: result })
 }
+exports.postQuestion = async (req, res) => {
+  const { id } = req.body;
+  const result = await QuestionDetails.findById(id);
+  res.status(202).json({ ques: result })
+}

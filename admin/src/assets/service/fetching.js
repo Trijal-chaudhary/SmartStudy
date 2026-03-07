@@ -16,3 +16,12 @@ export const gettingQuest = async ({ subName, semName, QuesYear, year, marks, Le
   })
   return response.json();
 }
+export const QuestionInfo = async ({ id }) => {
+  const response = await fetch(`${backendUrl}/admin/QuestionInfo`, {
+    method: "POST",
+    headers: { "COntent-Type": "application/json" },
+    body: JSON.stringify({ id }),
+    credentials: "include"
+  })
+  return response.json();
+}

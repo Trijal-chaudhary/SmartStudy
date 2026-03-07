@@ -4,7 +4,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Filter from "../Filter/Filter";
 import { gettingQuest } from "../../src/assets/service/fetching";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate = useNavigate();
   const [renderFilter, setRenderFilter] = useState(false);
   const [subName, setsubName] = useState("any");
   const [semName, setSemName] = useState("any");
@@ -48,11 +50,16 @@ const Home = () => {
         className="AddQuestionSVG"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 640 640"
+        onClick={() => navigate("/upload")}
       >
-        <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM296 408L296 344L232 344C218.7 344 208 333.3 208 320C208 306.7 218.7 296 232 296L296 296L296 232C296 218.7 306.7 208 320 208C333.3 208 344 218.7 344 232L344 296L408 296C421.3 296 432 306.7 432 320C432 333.3 421.3 344 408 344L344 344L344 408C344 421.3 333.3 432 320 432C306.7 432 296 421.3 296 408z" />
+        <path d="M512 384c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 96C0 60.7 28.7 32 64 32l138.7 0c13.8 0 27.3 4.5 38.4 12.8l38.4 28.8c5.5 4.2 12.3 6.4 19.2 6.4L448 80c35.3 0 64 28.7 64 64l0 240zM256 160c-13.3 0-24 10.7-24 24l0 48-48 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l48 0 0 48c0 13.3 10.7 24 24 24s24-10.7 24-24l0-48 48 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-48 0 0-48c0-13.3-10.7-24-24-24z" />
       </svg>
+
       {questions?.map((ele) => (
-        <div className="questCards">
+        <div
+          onClick={() => navigate(`/question/${ele._id}`)}
+          className="questCards"
+        >
           <img src={ele?.QuesUrl} alt="" />
           <div className="QuesDetail">
             <h4>Subject: {ele?.subject}</h4>

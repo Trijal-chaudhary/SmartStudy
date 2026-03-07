@@ -1,3 +1,4 @@
+import Home from "../Components/Home/Home";
 import Upload from "../Components/Upload/Upload";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -6,7 +7,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Upload />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/upload" element={<Upload />} />
         </Routes>
       </BrowserRouter>
     </>

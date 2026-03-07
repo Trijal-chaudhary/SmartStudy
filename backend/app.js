@@ -2,18 +2,19 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const { uploadQuestionRouter } = require('./router/AdminRouter');
+const { uploadQuestionRouter, gettingQuestionRouter } = require('./router/AdminRouter');
 const { PostGetQuestionsRouter } = require('./router/ClientRouter');
 const app = express();
 const DB_URL = process.env.DB_URL;
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "http://localhost:5174"],
   credentials: true
 }))
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/questionSubmit', uploadQuestionRouter)
+app.use('/admin/renderQues', gettingQuestionRouter)
 app.use('/client/gettingques', PostGetQuestionsRouter)
 mongoose.connect(DB_URL).then(() => {
   console.log('mongoose connected');

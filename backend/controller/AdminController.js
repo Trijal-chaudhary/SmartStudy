@@ -36,3 +36,7 @@ exports.uploadQuestion = async (req, res) => {
     res.status(500).json({ error: "Upload failed" });
   }
 }
+exports.gettingQuestion = async (req, res, next) => {
+  console.log(req.body);
+  res.status(202).json({ message: "hello" })
+}

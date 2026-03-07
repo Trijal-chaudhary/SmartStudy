@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer')
-const { uploadQuestion } = require('../controller/AdminController');
+const { uploadQuestion, gettingQuestion } = require('../controller/AdminController');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads')
@@ -14,7 +14,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 const uploadQuestionRouter = express.Router();
+const gettingQuestionRouter = express.Router();
 
 uploadQuestionRouter.post('/', upload.any(), uploadQuestion);
+gettingQuestionRouter.post('/', gettingQuestion);
 
 exports.uploadQuestionRouter = uploadQuestionRouter;
+exports.gettingQuestionRouter = gettingQuestionRouter;

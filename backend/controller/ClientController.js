@@ -1,6 +1,6 @@
 const QuestionDetails = require('../model/QuestionModels');
 exports.postGetQuestions = async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { Subject, Year, sem, QuesYear, marks, level } = req.body;
   const query = { subject: Subject, collYear: Year }
   if (sem !== "any") {

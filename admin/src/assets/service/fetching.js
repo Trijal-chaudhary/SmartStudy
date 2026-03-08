@@ -25,3 +25,12 @@ export const QuestionInfo = async ({ id }) => {
   })
   return response.json();
 }
+export const AddYear = async ({ year, id }) => {
+  const response = await fetch(`${backendUrl}/admin/addYear`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ year, id }),
+    credentials: "include",
+  })
+  return response.json();
+}

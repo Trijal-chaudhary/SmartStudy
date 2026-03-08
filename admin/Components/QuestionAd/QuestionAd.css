@@ -45,7 +45,10 @@
 
 .questionAdMetaBox{
   display:flex;
-  flex-direction:column;
+  /* flex-direction:column; */
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   background:#fafafa;
   padding:10px 16px;
   border-radius:8px;
@@ -89,7 +92,20 @@
 .questionAdLike{
   cursor:pointer;
 }
-
+.AddYeariconSVG{
+  height: 20px;
+  cursor: pointer;
+  fill: #334155;
+  transition: 0.3s ease-in-out;
+}
+.AddYeariconSVG:hover{
+  scale: 1.1;
+  fill:#0f172a;
+}
 .questionAdDislike{
   cursor:pointer;
+  
+}
+.flex{
+  display: flex;
 }

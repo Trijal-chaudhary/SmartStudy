@@ -66,3 +66,14 @@ exports.postQuestion = async (req, res) => {
   const result = await QuestionDetails.findById(id);
   res.status(202).json({ ques: result })
 }
+exports.postAddYear = async (req, res) => {
+  console.log(req.body);
+  const { year, id } = req.body;
+  const detail = await QuestionDetails.findById(id);
+  if (!detail) {
+    res.status(502).json({ message: "notSucc" })
+  }
+  detail.year.push(Number(year));
+  await detail.save();
+  res.status(202).json({ message: "added" });
+}

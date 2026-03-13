@@ -1,0 +1,120 @@
+import React, { useEffect, useMemo, useState } from "react";
+import { showSub } from "../../../src/assets/Subjects";
+import { useParams } from "react-router-dom";
+import {
+  changeQuestDet,
+  QuestionInfo,
+} from "../../../src/assets/service/fetching";
+
+const EditQuestion = () => {
+  const [sem, setSem] = useState([]);
+  const [subCode, setSubCode] = useState([]);
+  const [QuesInfo, setQuesInfo] = useState(null);
+  const { id } = useParams();
+  useEffect(() => {
+    // console.log(id);
+    QuestionInfo({ id }).then((ele) => {
+      // console.log(ele.ques);
+      setQuesInfo(ele.ques);
+      const qD = showSub.find((e) => e.sub === ele.ques.subject);
+      setSem(qD.sem);
+      setSubCode(qD.code);
+      console.log(qD);
+    });
+  }, []);
+  const handelChangeSubmit = (e) => {
+    e.preventDefault();
+    const file = e.target;
+    const formData = new FormData(file);
+    changeQuestDet(formData);
+    console.log(file);
+  };
+  return (
+    <div className="UploadOuterMainCont">
+      <form className="UploadOuterform" onSubmit={(e) => handelChangeSubmit(e)}>
+        <label htmlFor="Subjects">Subjects:</label>
+        <select value={QuesInfo?.subject} name="Subjects" id="subjects">
+          {showSub.map((ele) => (
+            <option value={ele.sub}>{ele.sub}</option>
+          ))}
+        </select>
+        <label htmlFor="Chapter">Chapter:</label>
+        <select value={QuesInfo?.chapter} name="Chapter" id="chapter">
+          <option value="1">Unit-1</option>
+          <option value="2">Unit-2</option>
+          <option value="3">Unit-3</option>
+          <option value="4">Unit-4</option>
+          <option value="5">Unit-5</option>
+        </select>
+        <label htmlFor="Year">Year:</label>
+        <select value={QuesInfo?.year[0]} name="Year" id="Year">
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+        </select>
+
+        {sem ? (
+          <>
+            <label htmlFor="Sem">Semester:</label>
+            <select value={QuesInfo?.semester} name="Sem" id="sem">
+              {sem.map((ele) => (
+                <option value={ele}>{ele}</option>
+              ))}
+            </select>
+          </>
+        ) : (
+          <></>
+        )}
+        {subCode ? (
+          <>
+            <label htmlFor="subCode">Subject Code:</label>
+            <select value={QuesInfo?.SubCode} name="SubCode" id="SubCode">
+              {subCode.map((ele) => (
+                <option value={ele}>{ele}</option>
+              ))}
+            </select>
+          </>
+        ) : (
+          <></>
+        )}
+
+        {/* <label htmlFor="Question">Upload Question:</label>
+        <input type="file" id="Question" name="Question" />
+        <label htmlFor="Ans">Upload Answer:</label>
+        <input type="file" id="Ans" name="Ans" /> */}
+        <label htmlFor="level">Level of Question:</label>
+        <input
+          type="number"
+          name="level"
+          id="level"
+          placeholder="Enter the level between 1 to 10"
+          value={QuesInfo?.level}
+        />
+        <label htmlFor="marks">Marks of the question:</label>
+        <input
+          type="number"
+          name="marks"
+          id="marks"
+          placeholder="Enter the marks"
+          value={QuesInfo?.marks}
+        />
+        <label htmlFor="quesType">Select Type of the question:</label>
+        <select value={QuesInfo?.type} name="quesType" id="quesType">
+          <option value="numerical">numerical</option>
+          <option value="theory">theory</option>
+        </select>
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  );
+};
+
+export default EditQuestion;

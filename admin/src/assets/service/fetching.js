@@ -34,3 +34,12 @@ export const AddYear = async ({ year, id }) => {
   })
   return response.json();
 }
+export const changeQuestDet = async (form) => {
+  const response = await fetch(`${backendUrl}/admin/changeQues`, {
+    method: "POST",
+    // headers :{"Content-type" : "application/json"},
+    body: form,
+    credentials: "include"
+  })
+  return response.json();
+}

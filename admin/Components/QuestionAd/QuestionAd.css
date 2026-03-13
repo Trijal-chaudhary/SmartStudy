@@ -17,6 +17,7 @@
   flex-direction:column;
   gap:25px;
   box-shadow:0px 8px 25px rgba(0,0,0,0.08);
+  position: relative;
 }
 
 .questionAdTopInfo{
@@ -108,4 +109,18 @@
 }
 .flex{
   display: flex;
+}
+.editIconSVG{
+  height: 28px;
+  position: absolute;
+  right: 30px;
+  top: 88px;
+  cursor: pointer;
+  fill: #334155;
+  transition: 0.3s ease-in-out;
+}
+.editIconSVG:hover{
+  scale: 1.1;
+  fill:#0f172a;
+  transform: rotate(90deg)
 }

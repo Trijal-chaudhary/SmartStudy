@@ -77,3 +77,7 @@ exports.postAddYear = async (req, res) => {
   await detail.save();
   res.status(202).json({ message: "added" });
 }
+exports.postChangeQuesDet = async (req, res) => {
+  console.log(req.body);
+  res.status(201).json({ message: "hello" });
+}
